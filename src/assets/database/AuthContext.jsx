@@ -14,11 +14,6 @@ import {
 import { auth } from './Firebase';
 import { db } from './Firebase';
 import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
   doc,
   setDoc,
   serverTimestamp
@@ -31,19 +26,7 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
 
-  const createDataLogistik = ()=>{
-  const uidClient = auth.currentUser.uid;
-  return addDoc(collection(db, 'client', uidClient, 'datalogistik'),{
-    kepalaNelayan: dataNama,
-    alamatNelayan: dataAlamat,
-    nomorNelayan: dataNomor,
-    kotaNelayan: dataKota,
-    kecamatanNelayan: dataKecamatan,
-    kapalNelayan:dataKapal,
-    jumlahNelayan: dataJumlahNelayan,
-    perjalananNelayan: dataPerjalanan,
-    waktuInput: serverTimestamp()});
-  }
+  
   const createClientDB = ()=>{
     const uidClient = auth.currentUser.uid;
   return setDoc(doc(db, 'client', uidClient),{loginTerakhir: serverTimestamp()});
@@ -86,7 +69,7 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{createDataLogistik,createClientDB, createUser, user, logout, signIn, googleSignIn }}>
+    <UserContext.Provider value={{createClientDB, createUser, user, logout, signIn, googleSignIn }}>
       {children}
     </UserContext.Provider>
   );

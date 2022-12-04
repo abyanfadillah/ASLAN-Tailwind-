@@ -8,8 +8,9 @@ const firebaseConfig = {
     projectId: "aslan-production",
     storageBucket: "aslan-production.appspot.com",
     messagingSenderId: "630237116594",
-    appId: "1:630237116594:web:c74a75b4c9a153533271ab",
+    appId: "1630237116594:web:c74a75b4c9a153533271ab",
     measurementId: "G-FSWD8M9C42"
+ 
 }
 
 const app = initializeApp (firebaseConfig);

@@ -1,15 +1,10 @@
-
 import React from "react";
 import { useState, useEffect } from "react";
 
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../assets/database/Firebase";
 import { db } from "../assets/database/Firebase";
-import {
-  collection,
-  addDoc,
-  serverTimestamp,
-} from "@firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "@firebase/firestore";
 
 import Aos from "aos";
 
@@ -35,8 +30,6 @@ export default function FormKalkulator() {
   const [isiNamaKapal, setIsiNamaKapal] = useState("");
   const [pilihJumlahN, setPilihJumlahN] = useState(0);
   const [pilihPerjalanan, setPilihPerjalanan] = useState(0);
-
- 
 
   const kota = [
     { id: 1, value: "Bintan", strValue: "Bintan" },
@@ -85,7 +78,6 @@ export default function FormKalkulator() {
   let optionsJumlahNelayan = null;
   let optionsLamaPerjalanan = null;
 
-
   //conditional tempat
   if (pilihKota === "Bintan") {
     typeKecamatan = bintan;
@@ -98,8 +90,6 @@ export default function FormKalkulator() {
     typeJumlahNelayan = jumlahNelayanK30;
     typeLamaPerjalanan = perjalananK30;
   }
-
-
 
   //Mapping option kecamatan
   if (typeKecamatan) {
@@ -129,10 +119,6 @@ export default function FormKalkulator() {
   }
 
   const createDataLogistik = () => {
-    setKebutuhanEsBatu((0.57 * pilihPerjalanan).toFixed(1));
-    setKebutuhanMinyak((37.5 * pilihPerjalanan).toFixed(1));
-    setkebutuhanBeras((0.39 * pilihPerjalanan * pilihJumlahN).toFixed(1));
-    setKebutuhanAir((20 * pilihPerjalanan * pilihJumlahN).toFixed(1));
     const uidClient = auth.currentUser.uid;
     return addDoc(collection(db, "client", uidClient, "datalogistik"), {
       kepalaNelayan: isiNama,

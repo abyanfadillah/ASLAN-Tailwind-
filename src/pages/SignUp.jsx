@@ -6,18 +6,14 @@ import Aos from "aos";
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const { createUser, user } = UserAuth();
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    setError("");
     try {
       await createUser(email, password);
     } catch (e) {
-      setError(e.message);
-      console.log(e.message);
       if (e.message == "Firebase: Error (auth/email-already-in-use).") {
         alert("Akun Sudah Digunakan");
       }
@@ -27,13 +23,6 @@ export default function SignUp() {
       ) {
         alert("Password Harus Lebih dari 6 Huruf");
       }
-    }
-  };
-  const handleGoogleSignIn = async () => {
-    try {
-      await googleSignIn();
-    } catch (error) {
-      console.log(error);
     }
   };
 
