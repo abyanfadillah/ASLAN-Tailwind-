@@ -125,7 +125,7 @@ export default function DataLogistik() {
                         </span>
                         <div className="grid grid-cols-1 justify-center">
                           <button
-                            onClick={async () => {
+                            onClick={() => {
                               setIdDokumen(item.id);
                               setLogicMasuk(true);
                             }}
@@ -134,7 +134,7 @@ export default function DataLogistik() {
                             Buka
                           </button>
                           <button
-                            onClick={(id) => {
+                            onClick={() => {
                               setIdDokumen(item.id);
                               setLogicHapus(true);
                             }}

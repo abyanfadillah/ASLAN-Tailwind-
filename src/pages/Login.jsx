@@ -7,21 +7,22 @@ export default function Example() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+
   const navigate = useNavigate();
-  const { signIn, googleSignIn, user, createClientDB } = UserAuth();
+  const { signIn, user, createClientDB } = UserAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError("");
+ 
     try {
       await signIn(email, password);
       await createClientDB();
     } catch (e) {
-      setError(e.message);
-      console.log(e.message);
       if (e.message == "Firebase: Error (auth/user-not-found).") {
         alert("User Tidak Ditemukan");
+      }
+      if (e.message == "Firebase: Error (auth/wrong-password).") {
+        alert("Username atau Password Salah");
       }
     }
   };
