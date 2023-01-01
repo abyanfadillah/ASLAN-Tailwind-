@@ -133,11 +133,13 @@ export default function FormKalkulator() {
       jumlahNelayan: Number(pilihJumlahN),
       perjalananNelayan: Number(pilihPerjalanan),
       logistikEsbBatu: Number((0.57 * pilihPerjalanan).toFixed(1)),
-      logistikMinyak: Number((37.5 * pilihPerjalanan).toFixed(1)),
+      logistikMinyak: Number((35.71 * pilihPerjalanan).toFixed(1)),
       logistikAirBersih: Number(
-        (20 * pilihPerjalanan * pilihJumlahN).toFixed(1)
+        (19.841 * pilihPerjalanan * pilihJumlahN).toFixed(1)
       ),
-      logistikBeras: Number((0.39 * pilihPerjalanan * pilihJumlahN).toFixed(1)),
+      logistikBeras: Number(
+        (0.357 * pilihPerjalanan * pilihJumlahN).toFixed(1)
+      ),
       waktuInput: serverTimestamp(),
     });
   };
